@@ -38,8 +38,8 @@ void Robot::AutonomousInit() {
     float heading_error = tx;
     float steering_adjust = Kp * tx;
 
-    leftside += steering_adjust;
-    rightside -= steering_adjust;
+    m_leftfront += steering_adjust;
+    m_rightfront -= steering_adjust;
   }
   /*
   m_autoSelected = m_chooser.GetSelected();
