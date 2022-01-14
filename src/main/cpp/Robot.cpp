@@ -18,6 +18,9 @@ double leftleadmotorID = 3, rightleadmotorID = 1, leftfollowmotorID = 4 , rightf
   double ts = table->GetNumber("ts",0.0);                   //Get skew of target
   double tv = table->GetNumber("tv", 0.0);
 
+  frc::MotorControllerGroup rightside{m_leftfront, m_leftback};
+  frc::MotorControllerGroup rightside{m_rightfront, m_rightback};
+
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
