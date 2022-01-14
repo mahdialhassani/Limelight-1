@@ -72,7 +72,7 @@ void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic() {
 
-  float Kp = -0.1;
+  float Kp = -0.01;
 
   std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
   double tx = table->GetNumber("tx");  
@@ -84,8 +84,8 @@ void Robot::TeleopPeriodic() {
 
     //float rotations = (steering_adjust/(6*pi))*8.68;
 
-    m_leftfront.Set(steering_adjust);
-    m_rightfront.Set(-steering_adjust);
+    m_leftfront.Set(-steering_adjust);
+    m_rightfront.Set(steering_adjust);
 
     //drive.tankDrive(steering_adjust, -steering_adjust);
 
