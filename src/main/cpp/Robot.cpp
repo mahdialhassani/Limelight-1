@@ -18,8 +18,8 @@ double leftleadmotorID = 3, rightleadmotorID = 1, leftfollowmotorID = 4 , rightf
   double ts = table->GetNumber("ts",0.0);                   //Get skew of target
   double tv = table->GetNumber("tv", 0.0);
 
-  //frc::Encoder leftEncoder{3,4;
-  //frc::Encoder rightEncoder{1,2};
+  frc::Encoder leftEncoder{3,4;
+  frc::Encoder rightEncoder{1,2};
 
   //frc::MotorControllerGroup leftside{m_leftfront, m_leftback};
   //frc::MotorControllerGroup rightside{m_rightfront, m_rightback};
@@ -33,6 +33,12 @@ void Robot::RobotInit() {
 
   m_leftback.Follow(m_leftfront);
   m_rightback.Follow(m_rightfront);
+
+  //drives 18.85 inches per rotation; 8.68 motor revs * 42
+  //365 rotations for 18.85 inches
+
+  leftEncoder.SetDistancePerPulse(1./256.);
+  rightEncoder.SetDistancePerPulse(1./256.);
 }
 
 void Robot::RobotPeriodic() {}
