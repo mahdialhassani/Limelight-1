@@ -18,8 +18,13 @@ double leftleadmotorID = 3, rightleadmotorID = 1, leftfollowmotorID = 4 , rightf
   double ts = table->GetNumber("ts",0.0);                   //Get skew of target
   double tv = table->GetNumber("tv", 0.0);
 
-  frc::MotorControllerGroup rightside{m_leftfront, m_leftback};
-  frc::MotorControllerGroup rightside{m_rightfront, m_rightback};
+  //frc::Encoder leftEncoder{3,4;
+  //frc::Encoder rightEncoder{1,2};
+
+  //frc::MotorControllerGroup leftside{m_leftfront, m_leftback};
+  //frc::MotorControllerGroup rightside{m_rightfront, m_rightback};
+
+  frc::DifferentialDrive drive{m_leftfront, m_rightfront}
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
@@ -41,8 +46,10 @@ void Robot::AutonomousInit() {
     float heading_error = tx;
     float steering_adjust = Kp * tx;
 
-    m_leftfront += steering_adjust;
-    m_rightfront -= steering_adjust;
+    drive.tankDrive(steering_adjust, -steering_adjust);
+
+    //m_leftfront += steering_adjust;
+    //m_rightfront -= steering_adjust;
   }
   /*
   m_autoSelected = m_chooser.GetSelected();
