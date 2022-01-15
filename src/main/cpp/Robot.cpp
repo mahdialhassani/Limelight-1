@@ -4,6 +4,7 @@
 #include "networktables/NetworkTable.h"
 #include "networktables/NetworkTableInstance.h"
 #include <frc/Joystick.h>
+#include <frc/drive/differentialdrive.h>
 
 using namespace frc;
 
@@ -22,6 +23,8 @@ using namespace frc;
 
   rev::CANEncoder m_encoderR = m_rightfront.GetEncoder();
   rev::CANEncoder m_encoderL = m_leftfront.GetEncoder();
+
+  frc::Joystick *m_stick;
 
   frc::DifferentialDrive drive{m_leftfront, m_rightfront};
 
@@ -75,7 +78,7 @@ void Robot::TeleopPeriodic() {
   float Kp = -0.01;
 
   std::shared_ptr<NetworkTable> table = nt::NetworkTableInstance::GetDefault().GetTable("limelight");
-  double tx = table->GetNumber("tx");  
+  double tx = table->GetNumber("tx", 0.0);  
 
   if (m_stick->GetRawButtonPressed(2)){
 
