@@ -23,7 +23,7 @@ using namespace frc;
   rev::CANEncoder m_encoderR = m_rightfront.GetEncoder();
   rev::CANEncoder m_encoderL = m_leftfront.GetEncoder();
 
-  frc::DifferentialDrive drive{m_leftfront, m_rightfront}
+  frc::DifferentialDrive drive{m_leftfront, m_rightfront};
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
